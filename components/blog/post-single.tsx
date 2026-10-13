@@ -42,7 +42,8 @@ function PostSingle({
 
 
                 {/* Main content */}
-                <div>
+                {/* min-w-0 lets this flex column shrink, so wide tables wrap instead of pushing the page wider */}
+                <div className="min-w-0">
 
                   {/* Article meta */}
                   {(author || date) && (
