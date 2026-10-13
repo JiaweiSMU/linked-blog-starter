@@ -2,6 +2,7 @@ import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
+import remarkHighlight from './remark-highlight'
 import rehypeRaw from 'rehype-raw'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeRewrite from 'rehype-rewrite';
@@ -29,6 +30,7 @@ export async function markdownToHtml(markdown: string, currSlug: string) {
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkHighlight)
     // keep inline HTML such as <br> in table cells; rehypeSanitize below still strips anything unsafe
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
